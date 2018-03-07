@@ -13,13 +13,13 @@ c2.connect("tcp://127.0.0.1:4242")
 class Hitung(object):
     def pilih_menu(self,a,b,menu):
         if (menu == 1):
-            c1.tambah(a,b)
+            return c1.tambah(a,b)
         elif (menu == 2):
-            c1.kurang(a,b)
+            return c1.kurang(a,b)
         elif (menu == 3):
-            c2.kali(a,b)
+            return c2.kali(a,b)
         elif (menu == 4):
-            c2.bagi(a,b)
+            return c2.bagi(a,b)
 
 #export
 s = zerorpc.Server(Hitung())
