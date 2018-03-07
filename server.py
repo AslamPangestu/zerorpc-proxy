@@ -1,16 +1,30 @@
 #ini server rpc
 import zerorpc
-import func1
-import func2
-import gevent
 
 #export modul func
-s1 = zerorpc.Server(func1)
+c1 = zerorpc.Client()
+#export
+c2 = zerorpc.Client()
 #remote service akan stay di socket adress berapa dgn protokol apa
-s1.bind("tcp://0.0.0.0:4242")
+c1.connect("tcp://127.0.0.1:4141")
+#remote service akan stay di socket adress berapa dgn protokol apa
+c2.connect("tcp://127.0.0.1:4242")
 
-s2 = zerorpc.Server(func2)
+class Hitung(object):
+    def pilih_menu(self,a,b,menu):
+        if (menu == 1):
+            c1.tambah(a,b)
+        elif (menu == 2):
+            c1.kurang(a,b)
+        elif (menu == 3):
+            c2.kali(a,b)
+        elif (menu == 4):
+            c2.bagi(a,b)
 
-s2.bind("tcp://0.0.0.0:8484")
+#export
+s = zerorpc.Server(Hitung())
+#remote service akan stay di socket adress berapa dgn protokol apa
+s.bind("tcp://0.0.0.0:4040")
 #jalankan
-gevent.joinall([gevent.spawn(s1.run),gevent.spawn(s2.run)])
+s.run()
+# gevent.joinall([gevent.spawn(s.run),gevent.spawn(c1.connect),gevent.spawn(c2.connect)])
