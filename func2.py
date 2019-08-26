@@ -2,11 +2,11 @@ import zerorpc
 
 class hitung2(object):
     def kali(self,x,y):
-        print "kali"
+        print("kali")
         return x*y
 
     def bagi(self,x,y):
-        print "bagi"
+        print("bagi")
         return x/y
 
 s = zerorpc.Server(hitung2())
