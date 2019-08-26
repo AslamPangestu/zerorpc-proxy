@@ -3,7 +3,7 @@ import zerorpc
 
 c = zerorpc.Client()
 #masukkan ip target
-c.connect("tcp://10.107.208.40:4040")
+c.connect("tcp://0.0.0.0:4040")
 
 a = eval(input ('Masukkan nilai x = '))
 b = eval(input ('Masukkan nilai y = '))
